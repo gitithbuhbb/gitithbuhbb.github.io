@@ -5,74 +5,51 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>我的题库</title>
 <style>
-body {
-    max-width: 850px;
-    margin: 3rem auto;
-    padding: 0 20px;
-    font-family: 微软雅黑, sans-serif;
-    line-height: 1.7;
-}
-.box {
-    margin: 16px 0;
-    padding: 10px 14px;
-    background: #f6f8fa;
-    border-radius: 6px;
-}
-.tag {
-    display: inline-block;
-    background: #e1edff;
-    color: #2b6cb0;
-    padding: 3px 10px;
-    border-radius: 999px;
-    margin: 4px 6px 4px 0;
-    font-size: 14px;
-}
-.link-btn {
-    display: inline-block;
-    background: #2b6cb0;
-    color: #fff;
-    padding: 6px 16px;
-    border-radius: 4px;
-    text-decoration: none;
-}
-.back {
-    margin-top: 30px;
-    display: inline-block;
-    color: #666;
-    text-decoration: none;
-}
+body{max-width:800px;margin:40px auto;padding:0 20px;font-family:system-ui,微软雅黑,sans-serif;line-height:1.8;}
+section{background:#f5f7fa;border-radius:8px;padding:12px 16px;margin:14px 0;}
+h4{margin:0 0 8px 0;color:#222;}
+p{margin:0;color:#444;}
+.tag{display:inline-block;background:#e6f0ff;color:#2364aa;padding:2px 10px;border-radius:20px;font-size:14px;margin:4px 6px 4px 0;}
+.jump-btn{display:inline-block;background:#2364aa;color:#fff;text-decoration:none;padding:6px 18px;border-radius:6px;margin-top:4px;}
+.back{display:inline-block;margin-top:30px;color:#666;text-decoration:none;}
 </style>
 </head>
 <body>
 
 <h2>小红的部分不同字符串</h2>
 
-<div class="box">
-<h4>1. 题目概述</h4>
-<p>一个长度为 n 的字符串仅由 26 个小写英文字母组成。 n 个限制条件，用一个数组 a = {a₁, a₂, …, aₙ} 表示，意为第 i 个字符与第 aᵢ 个字符不同。 求有多少种不同的字符串满足以上限制。</p>
-</div>
+<section>
+    <h4>1. 题目概述</h4>
+    <p>一个长度为 n 的字符串仅由 26 个小写英文字母组成。 n 个限制条件，用一个数组 a = {a₁, a₂, …, aₙ} 表示，意为第 i 个字符与第 aᵢ 个字符不同。 求有多少种不同的字符串满足以上限制。</p>
+</section>
 
-<div class="box">
-<h4>2. 简要思考</h4>
-<p>写自己第一想法、突破口、暴力做法是否可行。</p>
-</div>
+<section>
+    <h4>2. 输入数据范围</h4>
+    <p>2 ≦ n ≦ 2e5, 1 ≦ aᵢ ≦n且aᵢ != i</p>
+</section>
 
-<div class="box">
-<h4>3. 关键描述</h4>
-<p>核心性质、易错点、优化点、公式、边界条件。</p>
-</div>
+<section>
+    <h4>3. 关键思考</h4>
+    <p>并查集建图，各连通块处理着色问题；注意一共n个点n条边，所以全部连通块成基环形式，拓扑排序找树枝，剩下的就是环，然后ksm计数</p>
+</section>
 
-<div class="box">
-<h4>4. 标签</h4>
-<span class="tag">0</span>
-<span class="tag">0</span>
-<span class="tag">0</span>
-</div>
+<section>
+    <h4>4. 如何实现</h4>
+    <p>新奇的点在于对每个块做拓扑排序可以找出非环点，因为环上的点无法被push进去</p>
+</section>
 
-<div class="box">
-<h4>5. 原题跳转</h4>
-<a class="link-btn" target="_blank" href="原题url">点击前往原题</a>
-</div>
+<section>
+    <h4>5. 标签</h4>
+    <span class="tag">并查集</span>
+    <span class="tag">着色计数</span>
+    <span class="tag">缩点思想 基环树</span>
+    <span class="tag">拓扑排序->非环点</span>
+</section>
+
+<section>
+    <h4>6. 原题跳转</h4>
+    <a class="jump-btn" target="_blank" href="https://ac.nowcoder.com/acm/contest/131539/F">打开原题</a>
+</section>
 
 <a class="back" href="../index.html">← 返回题库首页</a>
 
