@@ -20,29 +20,32 @@ p{margin:0;color:#444;}
 
 <section>
     <h4>1. 题目概述</h4>
-    <p></p>
+    <p>给一串a0 - a(m-1)，一个最终结果c，q次询问，每次给一个x，问x能不能在下面规则下变成c<p>
+    <p>规则：每次x只能变成x + a(x mod m)</p>
 </section>
 
 <section>
     <h4>2. 输入数据范围</h4>
-    <p></p>
+    <p>1 ≤ m,q ≤ 2e5;1 ≤ c ≤ 1e9;0 ≤ ai ≤ 1e9;1 ≤ xi ≤ 1e9 </p>
 </section>
 
 <section>
     <h4>3. 关键思考</h4>
-    <p></p>
+    <p>注意到x，c均可以是从0 - m-1的基础点变来的，所以从x到c必将先走树上路径，再走环，反复周期到达c.<p>
+    <p>所以可以倍增dp存储每一步的变化，然后查表;<p>
+    <p>也可以根据题目最后结果相同（均为c），建一个从c反向回找的图，跑反向bfs，看x能不能由c反变化而来</p>
 </section>
 
 <section>
     <h4>4. 如何实现</h4>
-    <p></p>
+    <p>第一种：类似倍增lca，定义dp[i][j]表示从基础点j开始跑2^i步得到的增量，存储所有转移方式，然后贪心看x能不能加到c</p>
+    <p>第二种：先反向建基础点组成的图，找单周期步长cycle，然后把所有点都映射成基础点，从c%m跑bfs，看x%m和c%m的关系<p>
 </section>
 
 <section>
     <h4>5. 标签</h4>
-    <span class="tag"></span>
-    <span class="tag"></span>
-    <span class="tag"></span>
+    <span class="tag">倍增dp</span>
+    <span class="tag">反向图</span>
 </section>
 
 <section>
