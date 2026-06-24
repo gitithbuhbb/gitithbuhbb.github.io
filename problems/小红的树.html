@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我的题库</title>
+<style>
+body{max-width:800px;margin:40px auto;padding:0 20px;font-family:system-ui,微软雅黑,sans-serif;line-height:1.8;}
+section{background:#f5f7fa;border-radius:8px;padding:12px 16px;margin:14px 0;}
+h4{margin:0 0 8px 0;color:#222;}
+p{margin:0;color:#444;}
+.tag{display:inline-block;background:#e6f0ff;color:#2364aa;padding:2px 10px;border-radius:20px;font-size:14px;margin:4px 6px 4px 0;}
+.jump-btn{display:inline-block;background:#2364aa;color:#fff;text-decoration:none;padding:6px 18px;border-radius:6px;margin-top:4px;}
+.back{display:inline-block;margin-top:30px;color:#666;text-decoration:none;}
+</style>
+</head>
+<body>
+
+<h2>小红的树</h2>
+
+<section>
+    <h4>1. 题目概述</h4>
+    <p>给定一棵n节点树，节点有红和白两种颜色二定一，定义一棵树的权值：在可以将任意一个白色节点染成红色的条件下，使得树中恰好存在一个红色的连通块所需的最少染色次数。</p>
+    <p>处理q次查询，每次断开一条边，求分成的两棵树的权值和，每次查询独立<p>
+</section>
+
+<section>
+    <h4>2. 输入数据范围</h4>
+    <p>2e5，一个01字符串，0表示白，1表示红</p>
+</section>
+
+<section>
+    <h4>3. 关键思考</h4>
+    <p>注意到每次只删一条边对原树影响很小，那先算原树权值ans尝尝咸淡</p>
+    <p>发现叶子处的边对结果影响很单一，只需要把“叶子树”标红即可</p>
+    <p>白色夹边（夹在红边内部）对应的点如果度数为2，那么删去之后两部分的点分别变为叶子边，如果是高度边断开之后还是夹边，那么需要dsu记录2度块的情况</p>
+    <p>最后结果对边分类，叶子边直接ans + 1,2度边和高度边均可以ans - size + 1（高度边对应块大小为1）</p>
+</section>
+
+<section>
+    <h4>4. 如何实现</h4>
+    <p>由于询问是边，所以要对边开dsu，那么需要给边编号，可以建图时候getid()，并离散化以便dsu</p>
+    <p>由于要对边分类，那么需要在原图上删边，set建图可以log删边，把删的边记录在另一个set中，查询还可以log查找</p>
+    <p>再跑一遍dsu，记录2度块</p>
+    <p>注意特判 “白树” </p>
+</section>
+
+<section>
+    <h4>5. 标签</h4>
+    <span class="tag">并查集</span>
+    <span class="tag">set建图 + 删边</span>
+    <span class="tag">bfs</span>
+</section>
+
+<section>
+    <h4>6. 原题跳转</h4>
+    <a class="jump-btn" target="_blank" href="https://ac.nowcoder.com/acm/contest/136720/F">打开原题</a>
+</section>
+
+<a class="back" href="../index.html">← 返回题库首页</a>
+
+</body>
+</html>
